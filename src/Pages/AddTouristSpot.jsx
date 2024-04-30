@@ -8,7 +8,7 @@ import useTitle from "../Components/useTitle";
 
 const AddTouristSpot = () => {
     useTitle('Add-tourist-spots')
-    const [loading,setLoading]= useState(false)
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
     const [country, setCountry] = useState(null);
     const { user } = useContext(AuthContext);
@@ -17,14 +17,14 @@ const AddTouristSpot = () => {
     });
 
     useEffect(() => {
-        
+
         fetchData();
     }, []);
 
     const fetchData = async () => {
         setLoading(true)
         try {
-            const response = await fetch('http://localhost:5000/all-countries');
+            const response = await fetch('https://asia-voyage-server-nine.vercel.app/all-countries');
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -58,7 +58,7 @@ const AddTouristSpot = () => {
         const image = form.photo.value;
         const alldata = { tourists_spot_name, country_name, location, short_description, average_cost, seasonality, travel_time, total_visitors_per_year, user_name, user_email, image }
 
-        fetch('http://localhost:5000/addtourist', {
+        fetch('https://asia-voyage-server-nine.vercel.app/addtourist', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -81,33 +81,33 @@ const AddTouristSpot = () => {
 
     return (
         <div className="bg-gray-100 py-12">
-             {loading && (
+            {loading && (
                 <p className="text-center">
                     <span className="loading loading-bars loading-lg"></span>
                 </p>
             )}
             <div className="container mx-auto p-6 bg-white rounded-lg shadow-lg">
-            
-                <h1 className="text-4xl text-center mb-8 font-bold"><Typewriter 
-                        words={['Add Tourist Spot!']}
-                        loop={false}
-                        cursor
-                        cursorStyle='_'
-                        typeSpeed={80}
-                        deleteSpeed={50}
-                        delaySpeed={500}
-                        onLoop={() => {}} // Optional callback function on loop event
-                    />
-                     <a
-                    data-tooltip-id="my-tooltip"
-                    data-tooltip-content="Hello world!"
-                    data-tooltip-place="top"
-                >
-                    ◕‿‿◕
-                </a></h1>
 
-                
-              
+                <h1 className="text-4xl text-center mb-8 font-bold"><Typewriter
+                    words={['Add Tourist Spot!']}
+                    loop={false}
+                    cursor
+                    cursorStyle='_'
+                    typeSpeed={80}
+                    deleteSpeed={50}
+                    delaySpeed={500}
+                    onLoop={() => { }} // Optional callback function on loop event
+                />
+                    <a
+                        data-tooltip-id="my-tooltip"
+                        data-tooltip-content="Hello world!"
+                        data-tooltip-place="top"
+                    >
+                        ◕‿‿◕
+                    </a></h1>
+
+
+
 
 
                 <form onSubmit={handleAddSpot} className="max-w-xl mx-auto">

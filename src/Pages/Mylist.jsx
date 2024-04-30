@@ -5,7 +5,7 @@ import { Link, } from "react-router-dom";
 
 const Mylist = () => {
 
-   
+
 
 
 
@@ -22,7 +22,7 @@ const Mylist = () => {
     const { user } = useContext(AuthContext);
     const user_email = user.email;
 
-  
+
     useEffect(() => {
         fetchData();
     }, [user_email]);
@@ -30,7 +30,7 @@ const Mylist = () => {
     const fetchData = async () => {
         setLoading(true);
         try {
-            const response = await fetch(`http://localhost:5000/my-tourist-spots/${user_email}`);
+            const response = await fetch(`https://asia-voyage-server-nine.vercel.app/my-tourist-spots/${user_email}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -54,7 +54,7 @@ const Mylist = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/delete/${_id}`, {
+                fetch(`https://asia-voyage-server-nine.vercel.app/delete/${_id}`, {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json"
@@ -76,11 +76,11 @@ const Mylist = () => {
             }
         })
     };
-        const handleEdit = ()=>{
+    const handleEdit = () => {
 
-        }
-        console.log(data)
-        
+    }
+    console.log(data)
+
     return (
         <div className="h-[500px] mt-8">
             {loading && (
@@ -110,7 +110,7 @@ const Mylist = () => {
                                     <td className="border border-gray-500 px-4 py-2 flex justify-center gap-2">
                                         <Link to={`/edit-mylist/${mylist._id}`}>
 
-                                        <button className="text-blue-600 hover:text-blue-800 bg-transparent hover:bg-blue-200 rounded-md px-3 py-1 transition duration-300" onClick={() => handleEdit(mylist)}>Edit</button>
+                                            <button className="text-blue-600 hover:text-blue-800 bg-transparent hover:bg-blue-200 rounded-md px-3 py-1 transition duration-300" onClick={() => handleEdit(mylist)}>Edit</button>
                                         </Link>
                                         <button className="text-red-600 hover:text-red-800 bg-transparent hover:bg-red-200 rounded-md px-3 py-1 transition duration-300" onClick={() => handleDelete(mylist._id)}>Delete</button>
                                     </td>

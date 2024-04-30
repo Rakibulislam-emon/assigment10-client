@@ -32,11 +32,11 @@ const router = createBrowserRouter([
         element: <Login></Login>
       },
 
-      
+
       {
         path: '/alltourist',
         element: <PrivateRoute><AllTouristSpot></AllTouristSpot></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/addtourist')
+        loader: () => fetch('https://asia-voyage-server-nine.vercel.app/addtourist')
       },
       {
         path: "/addtourist",
@@ -58,14 +58,14 @@ const router = createBrowserRouter([
       {
         path: '/country/:country_name',
         element: <Country_spots></Country_spots>,
-        
+
       },
       {
         path: "/edit-mylist/:id",
         element: <Mylist_edit></Mylist_edit>,
-        loader: ({params}) => fetch(`http://localhost:5000/edit-mylist/${params.id}`)
+        loader: ({ params }) => fetch(`https://asia-voyage-server-nine.vercel.app/edit-mylist/${params.id}`)
       },
-      
+
 
 
     ]

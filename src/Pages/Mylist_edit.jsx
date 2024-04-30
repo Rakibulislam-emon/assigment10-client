@@ -16,7 +16,7 @@ const Mylist_edit = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://localhost:5000/all-countries');
+            const response = await fetch('https://asia-voyage-server-nine.vercel.app/all-countries');
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -39,7 +39,7 @@ const Mylist_edit = () => {
         const alldata = { _id, tourists_spot_name, country_name, location, average_cost };
 
         console.log(alldata);
-        fetch(`http://localhost:5000/update-mylist/${_id}`, {
+        fetch(`https://asia-voyage-server-nine.vercel.app/update-mylist/${_id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -68,8 +68,8 @@ const Mylist_edit = () => {
         <div>
             <div className="bg-gray-100 py-12">
                 <div className="container mx-auto p-6 bg-white rounded-lg shadow-lg">
-     
-                <h1 className="text-4xl text-center font-bold mb-8"><Typewriter 
+
+                    <h1 className="text-4xl text-center font-bold mb-8"><Typewriter
                         words={['Add Tourist Spot!']}
                         loop={false}
                         cursor
@@ -77,15 +77,15 @@ const Mylist_edit = () => {
                         typeSpeed={80}
                         deleteSpeed={50}
                         delaySpeed={500}
-                        onLoop={() => {}} // Optional callback function on loop event
+                        onLoop={() => { }} // Optional callback function on loop event
                     />
-                     <a
-                    data-tooltip-id="my-tooltip"
-                    data-tooltip-content="Hello world!"
-                    data-tooltip-place="top"
-                >
-                    ◕‿‿◕
-                </a></h1>
+                        <a
+                            data-tooltip-id="my-tooltip"
+                            data-tooltip-content="Hello world!"
+                            data-tooltip-place="top"
+                        >
+                            ◕‿‿◕
+                        </a></h1>
 
                     <form onSubmit={handleAddSpot} className="max-w-xl mx-auto">
                         <div className="grid grid-cols-1 gap-6">
@@ -93,7 +93,7 @@ const Mylist_edit = () => {
                                 <label htmlFor="country_name" className="block text-sm font-medium text-gray-700">Country Name</label>
                                 <select name="country_name" id="country_name" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
                                     {country && country.map(country => <option key={country._id} value={country.name}>{country.name}</option>)}
-                                    
+
                                 </select>
                             </div>
                             <div>
@@ -102,11 +102,11 @@ const Mylist_edit = () => {
                             </div>
                             <div>
                                 <label htmlFor="location" className="block text-sm font-medium text-gray-700">Location</label>
-                                <input type="text" name="location" id="location" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" defaultValue={location} required/>
+                                <input type="text" name="location" id="location" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" defaultValue={location} required />
                             </div>
                             <div>
                                 <label htmlFor="cost" className="block text-sm font-medium text-gray-700">Average Cost</label>
-                                <input type="text" name="cost" id="cost" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" defaultValue={average_cost} required/>
+                                <input type="text" name="cost" id="cost" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" defaultValue={average_cost} required />
                             </div>
                         </div>
                         <div className="mt-6">
