@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Fade, Slide, Zoom, Rotate } from 'react-awesome-reveal';
-import Slider from "react-slick";
+import {  Slide } from 'react-awesome-reveal';
+
 
 const Country = () => {
   const [data, setData] = useState([]);
